@@ -45,6 +45,7 @@ module CodeChallenge2
     end
 
     def test_request_payload
+      skip "we don't care about pulling down a secret payload anymore"
       expected_response = TestHelper.fixture('payload.json')
       stub_request(:get, @director.instance_variable_get(:@source_api)).to_return(body: expected_response)
 
