@@ -284,7 +284,7 @@ is called (filtering out 3 failed attempted Resources).
 ##### proposed methods:
 
 - `add_resource()`
-- `request_resource()` - returns a Resource, or nil if there are no Resources to hand out
+- `request_resource()` - returns a Resource, or `nil` if there are no Resources to hand out
 - `needs_processing?()`
 
 #### Processor
@@ -352,7 +352,7 @@ incorrectly so far is that I seem to have lost one resource somewhere. I ran it
 with one processor, one retry processor, and 1 second for everything.
 
 ```
-cat output.json | jq '. | length'
+$ cat output.json | jq '. | length'
 199
 ```
 
