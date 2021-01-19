@@ -39,6 +39,8 @@ module CodeChallenge2
                   :proc_max_startup_seconds, :proc_resource_bucket_size,
                   :resource_max_seconds, :resource_fail_rate
 
+    attr_reader   :input_path
+
     def initialize
       @max_attempts = 3
       @num_processors = 4
@@ -48,7 +50,6 @@ module CodeChallenge2
       @resource_max_seconds = 7
       @resource_fail_rate = 0.25
 
-      @source_api = '' # TODO: accept a file instead
       @processors_with_threads = []
       @shutdown = false
     end
@@ -68,11 +69,15 @@ module CodeChallenge2
       kill_processors
     end
 
+    def input_path=(path)
+      @input_path = File.expand_path(File.join(Dir.pwd, path))
+    end
+
     private
 
     def request_payload
-      logger.info("[ Director ]: acquiring payload from: #{@source_api}")
-      @raw_payload = Net::HTTP.get(URI(@source_api))
+      logger.info("[ Director ]: acquiring payload from [ #{@input_path} ]")
+      @raw_payload = File.open(@input_path, 'r').read
     end
 
     def create_resource_pool

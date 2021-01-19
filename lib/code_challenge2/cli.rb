@@ -44,7 +44,7 @@ module CodeChallenge2
 
     def parse!(input_arr: ARGV)
       optparse = OptionParser.new do |opts|
-        opts.banner = 'USAGE: collectr [OPTIONS]'
+        opts.banner = 'USAGE: code-challenge2 [OPTIONS] INPUTFILE'
         opts.version = "0.0.1 Copyright (C) #{Time.now.year} M. Adam Price"
 
         define_max_attempts_option(opts)
@@ -59,6 +59,9 @@ module CodeChallenge2
       end
 
       optparse.parse!(input_arr)
+
+      @input_path = input_arr.pop
+      raise 'Need to specify an input file.' unless @input_path
     end
 
     def jack_in
@@ -70,14 +73,15 @@ module CodeChallenge2
       @options.each { |key, val| logger.debug("\t#{key}: #{val}") }
       return if @options[:dry_run]
 
+      logger.info('creating director')
       director = create_director
+
       director.start!
     end
 
     private
 
     def create_director
-      logger.info('creating director')
       dir = Director.new
       dir.max_attempts = @options[:max_attempts]
       dir.num_processors = @options[:num_processors]
@@ -86,6 +90,7 @@ module CodeChallenge2
       dir.proc_resource_bucket_size = @options[:proc_resource_bucket_size]
       dir.resource_max_seconds = @options[:resource_max_seconds]
       dir.resource_fail_rate = @options[:resource_fail_rate]
+      dir.input_path = @input_path
       dir
     end
 
