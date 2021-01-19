@@ -1,5 +1,9 @@
 # Code Challenge 2
 
+![License](https://img.shields.io/github/license/komidore64/code-challenge2)
+![GitHub repo size](https://img.shields.io/github/repo-size/komidore64/code-challenge2)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/komidore64/code-challenge2/tests)
+
 ## PLEASE NOTE
 
 This code challenge repo was originally part of an interview take-home
@@ -94,9 +98,9 @@ the best of your ability:
 
 ## Solution
 
-OMG almost 2000 lines of code! This was a tough problem but I _extremely_
-enjoyed working on this. It's been a while since I've had the opportunity to
-sit down and focus on some code for hours and hours.
+OMG almost 2000 lines! This was a tough problem but I _extremely_ enjoyed
+working on this. It's been a while since I've had the opportunity to sit down
+and focus on some code for hours and hours.
 
 tree:
 
@@ -151,7 +155,7 @@ $ git ls-files | grep -v -e LICENSE -e input.json | xargs wc -l
     1 .ruby-version
    31 Gemfile
    61 Gemfile.lock
-  368 README.md
+  372 README.md
    46 Rakefile
    34 bin/code-challenge2
    25 lib/code_challenge2.rb
@@ -170,7 +174,7 @@ $ git ls-files | grep -v -e LICENSE -e input.json | xargs wc -l
    82 test/resource_test.rb
    58 test/retry_processor_test.rb
    39 test/test_helper.rb
- 1996 total
+ 2000 total
 ```
 
 ### Setup
