@@ -273,7 +273,7 @@ interface, but doing so might not hurt.
 The ResourcePool is a pool of all Resources that are not currently held by
 a Processor.
 
-The ResourcePool should use a semaphore any time its pool is accessed.
+The ResourcePool should use a mutex any time its pool is accessed.
 
 The ResourcePool will exclude unprocessed Resources with 3 failed
 processing attempts from `request_resource()`.
